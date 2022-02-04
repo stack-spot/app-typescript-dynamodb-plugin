@@ -1,1 +1,0 @@
-# app-typescript-dynamodb-plugin
