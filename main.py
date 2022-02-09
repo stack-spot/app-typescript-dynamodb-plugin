@@ -36,7 +36,7 @@ def write_in_stackfile(
 def execute_npm_install(infra_resource_path: str, source_dir_path: str):
     subprocess.run(['npm', 'install'], cwd=infra_resource_path)
     subprocess.run(
-        ['npm', 'install', '-S', '@stackspot/cdk-component-dynamodb-typescript@^0.2.1'],
+        ['npm', 'install', '-S', '@aws-cdk/aws-dynamodb @stackspot/cdk-component-dynamodb-typescript@^0.2.1'],
         cwd=infra_resource_path
     )
     subprocess.run(['npm', 'run', 'build'], cwd=infra_resource_path)
