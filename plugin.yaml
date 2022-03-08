@@ -7,3 +7,20 @@ inputs:
     type: text
     name: table_name
     default: Entity
+
+displayName: DynamoDB Plugin
+
+category: Backend
+
+compatibility:
+  - NodeJS 14.x
+
+about: about.md
+
+usage: usage.md
+
+useCase: useCase.md
+
+implementation: implementation.md
+
+technologies: [ "Typescript", "DynamoDB" ]
