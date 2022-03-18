@@ -7,6 +7,50 @@ inputs:
     type: text
     name: table_name
     default: Entity
+  - label: Define o caminho, a partir da raiz do projeto /infra, dos arquivos DynamoDB gerados, por padrão é src.
+    type: text
+    name: source_dir
+    default: src
+    required: false
+
+hooks:
+  - type: edit
+    trigger: before-render
+    path: infra/lib/{{service_name}}-service-stack.ts
+    changes:
+      - search:
+          string: import * as cdk from "@aws-cdk/core"
+          insert-after:
+            snippet: snippets/typescript-dynamodb-plugin-import.txt
+          when:
+            not-exists: import { StackSpotDynamoDBTable } from "@stackspot/cdk-component-dynamodb-typescript"
+  - type: edit
+    trigger: before-render
+    path: infra/lib/{{service_name}}-service-stack.ts
+    changes:
+      - search:
+          string: "super(scope, id, props);"
+          insert-after:
+            snippet: snippets/typescript-dynamodb-plugin-constructor.txt
+          when:
+            not-exists: new StackSpotDynamoDBTable(this, "StackSpotDynamoDBTable"
+  - type: edit
+    trigger: before-render
+    path: package.json
+    changes:
+      - search:
+          string: "scripts"
+          insert-after:
+            snippet: snippets/package-json-scripts.txt
+          when:
+            not-exists: "source:setup:dynamodb"
+  - type: run
+    trigger: after-render
+    commands:
+      - npm run infra:install:dynamodb
+      - npm run infra:format:fix
+      - npm run infra:build:cdk
+      - npm run source:setup:dynamodb
 
 displayName: DynamoDB Plugin
 

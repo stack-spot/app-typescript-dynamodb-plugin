@@ -1,0 +1,15 @@
+
+new StackSpotDynamoDBTable(this, "StackSpotDynamoDBTable", {
+    generateRepository: true,
+    repositoryGenerationConfiguration: {
+        tracing: false,
+        sourceDir: '{{source_dir}}',
+    },
+    tableConfiguration: {
+        tableName: '{{table_name}}',
+        partitionKey: {
+            name: 'id',
+            type: AttributeType.NUMBER
+        }
+    }
+});

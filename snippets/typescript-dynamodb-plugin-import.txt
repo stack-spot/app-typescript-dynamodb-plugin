@@ -1,0 +1,2 @@
+import { StackSpotDynamoDBTable } from "@stackspot/cdk-component-dynamodb-typescript";
+import { AttributeType } from "@aws-cdk/aws-dynamodb/lib/table";
