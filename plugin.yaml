@@ -46,11 +46,21 @@ hooks:
             not-exists: "source:setup:dynamodb"
   - type: run
     trigger: after-render
-    commands:
+    mac:
       - npm run infra:install:dynamodb
       - npm run infra:format:fix
       - npm run infra:build:cdk
       - npm run source:setup:dynamodb
+    linux:
+      - npm run infra:install:dynamodb
+      - npm run infra:format:fix
+      - npm run infra:build:cdk
+      - npm run source:setup:dynamodb
+    windows:
+      - npm.cmd run infra:install:dynamodb
+      - npm.cmd run infra:format:fix
+      - npm.cmd run infra:build:cdk
+      - npm.cmd run source:setup:dynamodb
 
 displayName: DynamoDB Plugin
 

@@ -1,0 +1,2 @@
+    "infra:install:dynamodb": "cd infra && npm install && npm install @aws-cdk/aws-dynamodb @stackspot/cdk-component-dynamodb-typescript@^0.2.1",
+    "source:setup:dynamodb": "cd {{source_dir}} && npm install && npm run build",
