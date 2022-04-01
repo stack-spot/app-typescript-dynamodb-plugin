@@ -7,11 +7,6 @@ inputs:
     type: text
     name: table_name
     default: Entity
-  - label: Define o caminho, a partir da raiz do projeto /infra, dos arquivos DynamoDB gerados, por padrão é src.
-    type: text
-    name: source_dir
-    default: src
-    required: false
 
 hooks:
   - type: edit
