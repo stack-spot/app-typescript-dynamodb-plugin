@@ -3,7 +3,7 @@ const dynamoDBTableProps = {
   generateRepository: true,
   repositoryGenerationConfiguration: {
       tracing: false,
-      sourceDir: '{{source_dir}}',
+      sourceDir: '../{{source_dir}}',
   },
   tableConfiguration: {
       tableName: '{{table_name}}',

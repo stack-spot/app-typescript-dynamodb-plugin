@@ -14,11 +14,11 @@ hooks:
     path: infra/lib/{{service_name}}-service-stack.ts
     changes:
       - search:
-          string: import * as cdk from "@aws-cdk/core"
+          string: import * as cdk from '@aws-cdk/core'
           insert-after:
             snippet: snippets/typescript-dynamodb-plugin-import.txt
           when:
-            not-exists: import { StackSpotDynamoDBTable } from "@stackspot/cdk-component-dynamodb-typescript"
+            not-exists: import { StackSpotDynamoDBTable } from '@stackspot/cdk-component-dynamodb-typescript'
   - type: edit
     trigger: before-render
     path: infra/lib/{{service_name}}-service-stack.ts
